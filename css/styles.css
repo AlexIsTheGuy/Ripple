@@ -365,8 +365,13 @@ main .container {
 	flex-flow: row wrap;
 	align-items: center;
 	margin: 1rem 1rem;
-	column-gap: 1rem;
+	gap: 1rem;
 	--mdc-theme-secondary: var(--mdc-theme-primary);
+}
+
+main .container * {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 main ul.mdc-typography--body1 {
@@ -378,14 +383,9 @@ main ul.mdc-typography--body1 p.mdc-typography--body1 {
 }
 
 main .codeblock {
-	max-width: calc(100vw - 4rem);
-	overflow: auto;
+	max-width: calc(100vw - 6rem);
+	width: 52rem;
 	margin: .5rem 0;
-}
-
-main .codeblock pre {
-	min-width: 52rem;
-	max-width: 52rem;
 }
 
 main label {

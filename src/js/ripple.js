@@ -10,13 +10,13 @@
  */
 
 {
+	const
 	/**
 	 *	Default config/options
 	 *	
 	 *	These are the options that will be used if the user calls
 	 *	`Ripple.initialize()` without any parameters.
 	 */
-	const
 	defaultOptions = {
 		'debug': false,
 		'ripple': {

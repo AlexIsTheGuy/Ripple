@@ -1,0 +1,183 @@
+/**
+ * Monokai Dark Soda
+ *
+ * For HTML, CSS and JS only.
+ * Based on https://github.com/AdamCaviness/vs-code-theme-monokai-dark-soda.
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"],.codeblock {
+	background: #242424;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .2em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+	color: #8C8C8C;
+}
+
+.token.punctuation {
+	color: #F8F8F2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted,
+.token.keyword,
+.token.operator,
+.token.doctype .token.doctype-tag {
+	color: #F92672;
+}
+
+.token.boolean,
+.token.number,
+.documentation.documentation,
+.documentation .token.keyword {
+	color: #FF80F4;
+}
+
+code.language-css,
+.token.attr-value,
+.token.attr-value .token.token.punctuation,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.token.string-property {
+	color: #FFEE99;
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #F8F8F2;
+}
+
+.token.variable,
+.token.property,
+.token.arrow-function,
+.property.language-css {
+	color: #66D9EF;
+}
+
+.token.atrule,
+.token.attr-name,
+.token.function,
+.token.class-name,
+.token.selector,
+.token.doctype .token.name,
+.class.language-css {
+	color: #A6E22E;
+}
+
+.token.regex,
+.token.important,
+.token.parameter,
+.argument.language-js {
+	color: #FD971F;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic,
+.token.parameter,
+.token.variable,
+.token.arrow-function {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.punctuation.brace-level-1,
+.token.punctuation.brace-level-4,
+.token.punctuation.brace-level-7,
+.token.punctuation.brace-level-10,
+.token.punctuation.brace-level-13,
+.token.punctuation.brace-level-16,
+.token.punctuation.brace-level-19,
+.token.punctuation.brace-level-22,
+.token.punctuation.brace-level-25,
+.token.punctuation.brace-level-28
+{
+    color: #ffcc00;
+}
+
+.token.punctuation.brace-level-2,
+.token.punctuation.brace-level-5,
+.token.punctuation.brace-level-8,
+.token.punctuation.brace-level-11,
+.token.punctuation.brace-level-14,
+.token.punctuation.brace-level-17,
+.token.punctuation.brace-level-20,
+.token.punctuation.brace-level-23,
+.token.punctuation.brace-level-26,
+.token.punctuation.brace-level-29 {
+    color: #da70d6;
+}
+
+.token.punctuation.brace-level-3,
+.token.punctuation.brace-level-6,
+.token.punctuation.brace-level-9,
+.token.punctuation.brace-level-12,
+.token.punctuation.brace-level-15,
+.token.punctuation.brace-level-18,
+.token.punctuation.brace-level-21,
+.token.punctuation.brace-level-24,
+.token.punctuation.brace-level-27,
+.token.punctuation.brace-level-30 {
+    color: #179fff;
+}
+
+.token.brace-open:not([id^='pair-']),
+.token.brace-close:not([id^='pair-']) {
+    color: #ff1212cc;
+}

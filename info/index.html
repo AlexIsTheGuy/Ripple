@@ -106,7 +106,7 @@
 					<h4 class='mdc-typography--subtitle1'>Note: To learn how to initialize Ripple with custom options please check the <a href='../docs'>documentation</a>.</h4>
 
 					<p class='mdc-typography--body1'>
-						After initialization, Ripple has included a default classname <code class='language-css class'>.ripple-effect</code> out of the box that can be used on elements:
+						After initialization, Ripple has included a default class name <code class='language-css class'>.ripple-effect</code> out of the box that can be used on elements:
 					</p>
 
 					<div class='codeblock'>
@@ -128,15 +128,15 @@
 					</div>
 
 					<p class='mdc-typography--body1'>
-						But if for some reason you can't or don't want to add a classname to every single HTML element in your code, you can attach Ripple effects to specific element(s) using JavaScript:
+						But if for some reason you can't or don't want to add a class name to every single HTML element in your code, you can attach Ripple effects to specific element(s) using JavaScript:
 					</p>
 
 					<div class='codeblock'>
 						<pre><code class='language-js'>
-							// Attaches a classname trigger.
+							// Attaches a class name trigger.
 							Ripple.attach('.my-button')
 
-							// Attaches an array of classname triggers with custom ripple options.
+							// Attaches an array of class name triggers with custom ripple options.
 							Ripple.attach(['.circle-button', 'mdc-icon-button'], {'centered': true})
 
 							// Attaches an element trigger.
@@ -144,8 +144,8 @@
 						</code></pre>
 					</div>
 
-					<h4 class='mdc-typography--subtitle1'>Note 1: Attaching classname triggers should be considered the better option than attaching element triggers because of <a href='https://stackoverflow.com/a/5358251' target='_blank'>the way JavaScript compares elements</a>.</h4>
-					<h4 class='mdc-typography--subtitle1'>Note 2: When using classnames with Ripple, the leading dot can be omitted.</h4>
+					<h4 class='mdc-typography--subtitle1'>Note 1: Attaching class name triggers should be considered the better option than attaching element triggers because of <a href='https://stackoverflow.com/a/5358251' target='_blank'>the way JavaScript compares elements</a>.</h4>
+					<h4 class='mdc-typography--subtitle1'>Note 2: When using class names with Ripple, the leading dot can be omitted.</h4>
 
 					<p class='mdc-typography--body1'>
 						Disabling Ripple triggers can be done in many different ways depending on your own preference.
@@ -163,7 +163,7 @@
 						</code></pre>
 					</div>
 
-					<h4 class='mdc-typography--subtitle1'>Note: If a classname trigger was already attached and you try to attach it again with different options, only the options will be changed.</h4>
+					<h4 class='mdc-typography--subtitle1'>Note: If a class name trigger was already attached and you try to attach it again with different options, only the options will be changed.</h4>
 					
 					<div class='codeblock'>
 						<script type='text/plain' class='language-html'>
@@ -189,7 +189,7 @@
 
 					<div class='codeblock'>
 						<pre><code class='language-js'>
-							// Detaches (deletes) a classname trigger and its options.
+							// Detaches (deletes) a class name trigger and its options.
 							Ripple.detach('mdc-button')
 						</code></pre>
 					</div>

@@ -173,14 +173,14 @@
 										<th class='mdc-data-table__cell' scope='row'>ripple.helperClass</th>
 
 										<td class='mdc-data-table__cell'><code class='language-js'>true</code></td>
-										<td class='mdc-data-table__cell'>Adds <code class='language-css class'>.ripple-helper-class</code> classname to the target element while it is "rippling".</td>
+										<td class='mdc-data-table__cell'>Adds <code class='language-css class'>.ripple-helper-class</code> class name to the target element while it is "rippling".</td>
 										<td class='mdc-data-table__cell'>Boolean</td>
 									</tr>
 									<tr class='mdc-data-table__row'>
 										<th class='mdc-data-table__cell' scope='row'>ripple.container</th>
 
 										<td class='mdc-data-table__cell'><code class='language-js'>'.ripple-container'</code></td>
-										<td class='mdc-data-table__cell'>Classname that the ripple container will have. If an element inside the target element matches the classname it will be used instead. False or empty string means no container.</td>
+										<td class='mdc-data-table__cell'>Class name that the ripple container will have. If an element inside the target element matches the class name it will be used instead. False or empty string means no container.</td>
 										<td class='mdc-data-table__cell'>String or false</td>
 									</tr>
 									<tr class='mdc-data-table__row'>
@@ -210,7 +210,7 @@
 								'container': false
 							}
 
-							//	Attach ripple to '.no-container' classname elements with
+							//	Attach ripple to '.no-container' class name elements with
 							//	no container options.
 							Ripple.attach('.no-container', noContainerOptions)
 						</code></pre>
@@ -231,11 +231,11 @@
 					<div class='headline6-container'>
 
 						<p class='mdc-typography--body1'>
-							Ripple.triggerClasses object contains a list of objects that have the names of currently attached classlist triggers.
+							Ripple.triggerClasses object contains a list of objects that have the names of currently attached class list triggers.
 						</p>
 
 						<p class='mdc-typography--body1'>
-							Each one of the classlist trigger objects contain a nested <code class='language-js'>'ripple'</code>
+							Each one of the class list trigger objects contain a nested <code class='language-js'>'ripple'</code>
 							object containing only the options that differ from the global options' <code class='language-js'>'ripple'</code>
 							object.
 						</p>
@@ -326,7 +326,7 @@
 						</code></pre>
 					</div>
 
-					<h4 class='mdc-typography--subtitle1'>Note: Calling Ripple.initialize() function multiple times will automatically deinitialize Ripple before initializing again.</h4>
+					<h4 class='mdc-typography--subtitle1'>Note: Calling Ripple.initialize() function multiple times will automatically reinitialize Ripple.</h4>
 
 					<h3 class='mdc-typography--headline6'>Ripple.deinitialize()</h3>
 
@@ -358,7 +358,7 @@
 						</p>
 
 						<ul class='mdc-typography--body1'>
-							<li>elements - A String, HTMLElement or Array of classnames and/or elements that should be able to ripple.</li>
+							<li>elements - A String, HTMLElement or Array of class names and/or elements that should be able to ripple.</li>
 							<li>options (optional) - An Object that provides a way of configuring Ripple for this trigger only.</li>
 						</ul>
 
@@ -368,13 +368,13 @@
 						<pre><code class='language-js'>
 							//	Attaches a Ripple trigger with custom options.
 
-							//	Classname trigger.
+							//	Class name trigger.
 							Ripple.attach('.first-element', {'target': '.second-element'})
 
 							//	HTMLElement trigger.
 							Ripple.attach(document.querySelector('.first-element'), {'target': '.second-element'})
 
-							//	Array with a classname trigger. (Arrays can contain HTMLElements too)
+							//	Array with a class name trigger. (Arrays can contain HTMLElements too)
 							Ripple.attach(['.first-element'], {'target': '.second-element'})
 						</code></pre>
 					</div>
@@ -394,7 +394,7 @@
 						</p>
 
 						<ul class='mdc-typography--body1'>
-							<li>elements - A String, HTMLElement or Array of classnames and/or elements that should no longer be able to ripple.</li>
+							<li>elements - A String, HTMLElement or Array of class names and/or elements that should no longer be able to ripple.</li>
 						</ul>
 
 					</div>
@@ -403,7 +403,7 @@
 						<pre><code class='language-js'>
 							//	Removes a Ripple trigger.
 
-							//	Classname trigger.
+							//	Class name trigger.
 							Ripple.detach('.button')
 
 							//	HTMLElement trigger.

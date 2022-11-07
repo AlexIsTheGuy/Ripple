@@ -1,5 +1,5 @@
 /**
- * Ripple
+ * Ripple v0.1.0
  * 
  * JavaScript ripple click effect library inspired by Material Design.
  * https://github.com/AlexIsTheGuy/Ripple
@@ -8,3 +8,37 @@
  * Released under the MIT License
  * https://github.com/AlexIsTheGuy/Ripple/blob/main/LICENSE
  */
+
+.ripple-helper-class {
+	position: relative;
+}
+
+.ripple-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.ripple-container-unbounded {
+	overflow: visible;
+}
+
+.ripple-container-unbounded > .ripple-container {
+	overflow: visible;
+}
+
+.ripple-element {
+    position: absolute;
+    background: var(--ripple-color, #0000001F);
+    border-radius: 50%;
+    opacity: 0;
+	transform: scale(0) translateZ(0);
+	transition-property: transform,opacity;
+	transition-timing-function: ease-out;
+    pointer-events: none;
+    z-index: 1;
+}

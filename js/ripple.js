@@ -150,8 +150,6 @@
 				this.options[option] = options[option]
 			})
 			
-
-			this.touchMoved = false
 			this.touchEnd = false
 			//	List of ripple elements in the DOM.
 			this.activeRipples = {}
@@ -457,7 +455,8 @@
 			this.activeRipples[randomID] = {
 				'target': target, 
 				'ripple': ripple,
-				'options': options
+				'options': options,
+				'touchMoved': false
 			}
 
 			//	Call the next function.
@@ -469,7 +468,8 @@
 		}
 		showRipple = async (target, ripple) => {
 			let touchEnd = false,
-			options = this.activeRipples[ripple.dataset.rippleId]['options']
+			options = this.activeRipples[ripple.dataset.rippleId]['options'],
+			touchMoved = this.activeRipples[ripple.dataset.rippleId]['touchMoved']
 
 			/**
 			 *	A function whose purpose is to pass parameters to another
@@ -478,11 +478,22 @@
 			 *	event listener.
 			 */
 			const hideRippleParams = (e) => {
+				//	If the targets don't match:
+				if (e.target !== target) {
+					//	Stop executing the function.
+					return false
+				}
 				//	Call the next function.
 				//	(Hide the ripple element.)
 				this.hideRipple(target, ripple, e.type)
 			},
-
+			/**
+			 *	A function for use with addEventListener() which can be used
+			 *	to remove the event listener afterwards.
+			 */	
+			touchMove = () => {
+				touchMoved = true
+			},
 			/**
 			 *	A function for use with addEventListener() which can be used
 			 *	to remove the event listener afterwards.
@@ -490,9 +501,14 @@
 			 *	This function will be called when the user stops touching
 			 *	the screen with their finger.
 			 */	
-			touchEndRipple = async () => {
+			touchEndRipple = async (e) => {
+				//	If the targets don't match:
+				if (e.target !== target) {
+					//	Stop executing the function.
+					return false
+				}
 				//	If the user moved their finger:
-				if (this.touchMoved) {
+				if (touchMoved) {
 					//	Call the next function.
 					//	(Remove the ripple element from the DOM immediately.)
 					this.removeRipple(ripple, false)
@@ -504,7 +520,7 @@
 				setTimeout(() => {
 					ripple.style.opacity = 1
 					ripple.style.transform = 'scale(1) translateZ(0)'
-				})
+				},10)
 
 				//	Wait for the transition to finish.
 				await sleep(options['duration'])
@@ -516,13 +532,14 @@
 				//	(Remove the ripple element from the DOM.)
 				this.removeRipple(ripple)
 			}
+
 			//	Store the `hideRippleParams()` function in the list of ripple elements
 			//	in the DOM for future reference.
 			this.activeRipples[ripple.dataset.rippleId]['hideRippleFunction'] = hideRippleParams
 
 			//	Add event listeners responsible for removing the ripple
 			//	element before waiting for the touch delay time.
-			document.body.addEventListener('touchmove', this.touchMove)
+			document.body.addEventListener('touchmove', touchMove)
 			document.body.addEventListener('touchend', touchEndRipple)
 			document.body.addEventListener('touchcancel', touchEndRipple)
 
@@ -532,14 +549,14 @@
 			await sleep(this.touchDelay)
 
 			//	Remove event listeners that aren't needed anymore.
-			document.body.removeEventListener('touchmove', this.touchMove)
+			document.body.removeEventListener('touchmove', touchMove)
 			document.body.removeEventListener('touchend', touchEndRipple)
 			document.body.removeEventListener('touchcancel', touchEndRipple)
 
 			//	If the user didn't stop touching the target element, moved their
 			//	finger across the screen and the target element still contains the ripple
 			//	element which is hidden before `this.touchDelay`ms time has passed:
-			if (touchEnd === false && this.touchMoved === false && ripple.style.opacity !== 1 && target.contains(ripple)) {
+			if (touchEnd === false && touchMoved === false && ripple.style.opacity !== 1 && target.contains(ripple)) {
 				//	Show the ripple element.
 				ripple.style.opacity = 1
 				ripple.style.transform = 'scale(1) translateZ(0)'
@@ -556,10 +573,16 @@
 			}
 			else {
 				//	Return the variable to it's default state.
-				this.touchMoved = false
+				touchMoved = false
 			}
 		}
 		hideRipple = async (target, ripple, eventType) => {
+			//	If the ripple effect doesn't exist anymore:
+			if (!this.activeRipples[ripple.dataset.rippleId]) {
+				//	Stop executing the function.
+				return false
+			}
+
 			//	Retreive the `hideRippleParams()` function from the list of
 			//	ripple elements in the DOM so the event listeners that call
 			//	this function could be removed. (This is the future reference)
@@ -626,13 +649,6 @@
 				//	the console instead of (possibly) breaking stuff.
 				console.error(error)
 			}
-		}
-		/**
-		 *	A function for use with addEventListener() which can be used
-		 *	to remove the event listener afterwards.
-		 */	
-		touchMove = () => {
-			this.touchMoved = true
 		}
 		/**
 		 *	A function for use with addEventListener() which can be used

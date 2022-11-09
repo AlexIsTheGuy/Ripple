@@ -295,6 +295,9 @@ main {
 }
 
 @media (max-width: 360px) {
+	:root {
+		--mdc-typography-headline3-font-size: 2.5rem;
+	}
 	.mdc-top-app-bar .mdc-top-app-bar__title.logo {
 		margin-left: 0;
 	}

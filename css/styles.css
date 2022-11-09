@@ -18,7 +18,7 @@
 	--mdc-theme-primary: var(--accent-color);
 	--mdc-outlined-button-outline-color: var(--mdc-theme-primary);
 
-	--mdc-theme-text-primary-on-primary: rgba(255,255,255,.87);
+	--mdc-theme-text-primary-on-primary: rgba(255, 255, 255, .87);
 
 	--mdc-typography-headline1-font-family: var(--font-headline);
 	--mdc-typography-headline2-font-family: var(--font-headline);
@@ -159,15 +159,15 @@ a {
 	}
 
 	.dark-theme .mdc-data-table {
-		border-color: rgba(255,255,255,.12);
+		border-color: rgba(255, 255, 255, .12);
 	}
 
 	.dark-theme .mdc-data-table__row:not(.mdc-data-table__row--selected):hover {
-		background-color: rgba(255,255,255,.04);
+		background-color: rgba(255, 255, 255, .04);
 	}
 
 	.dark-theme .mdc-data-table__cell, .dark-theme .mdc-data-table__header-cell {
-		border-bottom-color: rgba(255,255,255,.12);
+		border-bottom-color: rgba(255, 255, 255, .12);
 	}
 
 	.mdc-data-table__header-cell, .mdc-data-table__pagination-total, .mdc-data-table__pagination-rows-per-page-label,.mdc-data-table__cell {

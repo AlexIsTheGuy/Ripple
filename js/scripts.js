@@ -69,9 +69,22 @@ switchElements.forEach(switchElement => {
 	let tempSwitch = new MDCSwitch(switchElement)
 })
 
-document.querySelectorAll('[data-button-link]').forEach(button => {
+//	Button links
+
+document.querySelectorAll('[data-button]').forEach(button => {
+	//	Replace href with data-button-link
+	button.setAttribute('data-button-link', button.getAttribute('href'))
+	button.removeAttribute('href')
+
+	//	Left click
 	button.addEventListener('click', () => {
-		window.open(button.dataset.buttonLink,'_self')
+		window.open(button.dataset.buttonLink, '_self')
+	})
+	//	Middle click (Open in new tab)
+	button.addEventListener('auxclick', (e) => {
+		if (e.button === 1) {
+			window.open(button.dataset.buttonLink, '_blank')
+		}
 	})
 })
 

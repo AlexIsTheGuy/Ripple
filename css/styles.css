@@ -125,6 +125,10 @@ a {
 	color: var(--mdc-theme-primary)
 }
 
+[data-button] {
+	cursor: pointer;
+}
+
 ::-webkit-scrollbar {
 	width: .75rem;
 	height: .75rem;

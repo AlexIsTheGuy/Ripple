@@ -244,7 +244,6 @@ a {
 
 .mdc-data-table {
 	overflow: auto;
-	margin-top: 1rem;
 }
 
 .mdc-data-table :not(pre) > code[class*="language-"] {
@@ -413,4 +412,8 @@ main .example-div {
 	outline: 1px solid var(--accent-color);
 	outline-offset: -1px;
 	user-select: none;
+}
+
+main .mdc-data-table {
+	margin-top: 1rem;
 }

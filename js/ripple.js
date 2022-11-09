@@ -302,8 +302,8 @@
 					//	before starting the effect to prevent the effect from happening when
 					//	the user intends to scroll the page.
 					this.touchDelay = options['delay']
-					//	React only to the first touch and ignore the rest.
-					ev = e.touches[0]
+					//	React only to the last touch in the targetTouches array.
+					ev = e.targetTouches[e.targetTouches.length-1]
 				}
 				else {
 					//	Don't wait if the event was not a TouchEvent.
@@ -501,8 +501,10 @@
 				touchEnd = true
 
 				//	Show the ripple element.
-				ripple.style.opacity = 1
-				ripple.style.transform = 'scale(1) translateZ(0)'
+				setTimeout(() => {
+					ripple.style.opacity = 1
+					ripple.style.transform = 'scale(1) translateZ(0)'
+				})
 
 				//	Wait for the transition to finish.
 				await sleep(options['duration'])
@@ -522,6 +524,7 @@
 			//	element before waiting for the touch delay time.
 			document.body.addEventListener('touchmove', this.touchMove)
 			document.body.addEventListener('touchend', touchEndRipple)
+			document.body.addEventListener('touchcancel', touchEndRipple)
 
 			//	Wait for `this.touchDelay`ms. Remove the ripple element
 			//	if the user moves their finger on the screen or stops touching
@@ -531,6 +534,7 @@
 			//	Remove event listeners that aren't needed anymore.
 			document.body.removeEventListener('touchmove', this.touchMove)
 			document.body.removeEventListener('touchend', touchEndRipple)
+			document.body.removeEventListener('touchcancel', touchEndRipple)
 
 			//	If the user didn't stop touching the target element, moved their
 			//	finger across the screen and the target element still contains the ripple
@@ -542,10 +546,11 @@
 
 				//	Add event listeners responsible for hiding the ripple element
 				//	when the user moves their finger across the screen, stops touching
-				//	the screen with their finger or mouse or their mouse leaves the
-				//	target element.
+				//	the screen with their finger or mouse, the touch event gets cancelled
+				//	for some reason or their mouse leaves the target element.
 				document.body.addEventListener('touchmove', hideRippleParams)
 				document.body.addEventListener('touchend', hideRippleParams)
+				document.body.addEventListener('touchcancel', hideRippleParams)
 				document.body.addEventListener('mouseup', hideRippleParams)
 				target.addEventListener('mouseleave', hideRippleParams)
 			}

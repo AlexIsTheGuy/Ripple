@@ -95,3 +95,12 @@ main .codeblock pre code {
 }
 
 /* Visually normalize codeblocks' extra tabs. */
+
+/* Remove color from codeblocks */
+
+code[class*="language-"]:not(#specificityHack),
+pre[class*="language-"]:not(#specificityHack) {
+	color: #f8f8f2;
+}
+
+/* Remove color from codeblocks */

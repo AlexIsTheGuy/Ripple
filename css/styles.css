@@ -48,6 +48,12 @@
 	--mdc-switch-selected-focus-handle-color: var(--mdc-theme-primary);
 }
 
+::selection {
+	background-color: var(--scrollbar-hover-color);
+	color: white;
+	text-shadow: none;
+}
+
 :root.dark-theme {
 	--accent-color: #54B36D;
 

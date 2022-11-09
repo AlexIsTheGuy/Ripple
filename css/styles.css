@@ -180,6 +180,8 @@ a {
 		color: var(--mdc-theme-text-primary-on-light);
 	}
 
+	/* Dark theme fix */
+
 .mdc-ripple-upgraded .mdc-switch__ripple::after {
 	--mdc-ripple-fg-size: 0; /* Disable MDC ripple */
 }

@@ -416,4 +416,5 @@ main .example-div {
 
 main .mdc-data-table {
 	margin-top: 1rem;
+	max-width: calc(100vw - 6rem);
 }

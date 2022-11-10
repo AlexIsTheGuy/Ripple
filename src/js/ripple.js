@@ -356,9 +356,19 @@
 							options['container'] = options['container'].substring(1)
 						}
 
-						//	If an element that matches the classname inside
-						//	`options['container']` exists in the target element:
+						//	Check if element is a direct child.
+						let isDirectChild = false
 						if (target.querySelector(`.${options['container']}`)) {
+							[...target.querySelector(`.${options['container']}`).children].forEach(el => {
+								if (el === target.querySelector(`.${options['container']}`)) {
+									isDirectChild = true
+								}
+							})
+						}
+						//	If an element that matches the classname inside
+						//	`options['container']` exists in the target element
+						//	and it is its direct child element:
+						if (target.querySelector(`.${options['container']}`) && isDirectChild) {
 							//	Set the first element inside the target that matches
 							//	the classname inside `options['container']` as the
 							//	container for ripple elements.
@@ -479,7 +489,7 @@
 			 */
 			const hideRippleParams = (e) => {
 				//	If the targets don't match:
-				if (e.target !== target) {
+				if (!e.composedPath().includes(target)) {
 					//	Stop executing the function.
 					return false
 				}
@@ -503,7 +513,7 @@
 			 */	
 			touchEndRipple = async (e) => {
 				//	If the targets don't match:
-				if (e.target !== target) {
+				if (!e.composedPath().includes(target)) {
 					//	Stop executing the function.
 					return false
 				}

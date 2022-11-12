@@ -406,11 +406,11 @@
 
 					//	Call the next function.
 					//	(Create the ripple element and add it to the DOM.)
-					this.addRipple(relX, relY, target, rippleContainer, options)
+					this.addRipple(relX, relY, trigger, target, rippleContainer, options)
 				})
 			}
 		}
-		addRipple = (x, y, target, rippleContainer, options={...this.options['ripple']}) => {
+		addRipple = (x, y, trigger, target, rippleContainer, options={...this.options['ripple']}) => {
 			//	Shorthand
 			if (x === 'c') {
 				x = target.clientWidth/2
@@ -471,12 +471,9 @@
 
 			//	Call the next function.
 			//	(Show the ripple element.)
-			this.showRipple(target, ripple)
-
-			//	Return the ripple that was just created for reference with other functions.
-			return ripple
+			this.showRipple(trigger, target, ripple)
 		}
-		showRipple = async (target, ripple) => {
+		showRipple = async (trigger, target, ripple) => {
 			let touchEnd = false,
 			options = this.activeRipples[ripple.dataset.rippleId]['options'],
 			touchMoved = this.activeRipples[ripple.dataset.rippleId]['touchMoved']
@@ -495,7 +492,7 @@
 				}
 				//	Call the next function.
 				//	(Hide the ripple element.)
-				this.hideRipple(target, ripple, e.type)
+				this.hideRipple(trigger, ripple, e.type)
 			},
 			/**
 			 *	A function for use with addEventListener() which can be used
@@ -579,14 +576,10 @@
 				document.body.addEventListener('touchend', hideRippleParams)
 				document.body.addEventListener('touchcancel', hideRippleParams)
 				document.body.addEventListener('mouseup', hideRippleParams)
-				target.addEventListener('mouseleave', hideRippleParams)
-			}
-			else {
-				//	Return the variable to it's default state.
-				touchMoved = false
+				trigger.addEventListener('mouseleave', hideRippleParams)
 			}
 		}
-		hideRipple = async (target, ripple, eventType) => {
+		hideRipple = async (trigger, ripple, eventType) => {
 			//	If the ripple effect doesn't exist anymore:
 			if (!this.activeRipples[ripple.dataset.rippleId]) {
 				//	Stop executing the function.
@@ -603,7 +596,7 @@
 			document.body.removeEventListener('touchmove', hideRippleParams)
 			document.body.removeEventListener('touchend', hideRippleParams)
 			document.body.removeEventListener('mouseup', hideRippleParams)
-			target.removeEventListener('mouseleave', hideRippleParams)
+			trigger.removeEventListener('mouseleave', hideRippleParams)
 
 			const currentTime = Date.now(),
 			createdTime = Number(ripple.dataset.rippleCreated)

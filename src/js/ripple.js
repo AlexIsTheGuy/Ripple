@@ -759,10 +759,8 @@
 			elements = [elements]
 		}
 
-		if (typeof elements === 'string') {
-			elements.split(',').forEach(_className => {
-				attachClass(_className, options)
-			})
+		if (typeof elements === 'string' && elements.length > 0) {
+			attachClass(elements, options)
 		}
 		else if (Array.isArray(elements)) {
 			let _elements = []
@@ -804,16 +802,22 @@
 	 */
 	Ripple.detach = (elements) => {
 		if (typeof elements === 'string') {
-			elements.split(',').forEach(_class => {
-				detachClass(_class)
-			})
+			detachClass(_class)
 		}
 		else {
 			if (elements instanceof HTMLElement) {
 				elements = [elements]
 			}
 			Array.from(elements).flat().forEach(_element => {
-				detachElement(_element)
+				if (typeof _element === 'string' && _element.length > 0) {
+					detachClass(_element)
+				}
+				else if (_element instanceof HTMLElement) {
+					detachElement(_element)
+				}
+				else {
+					throw new TypeError('_element is not a string or HTMLElement.')
+				}
 			})
 		}
 	}

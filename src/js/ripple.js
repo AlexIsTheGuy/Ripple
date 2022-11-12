@@ -359,7 +359,7 @@
 						//	Check if element is a direct child.
 						let isDirectChild = false
 						if (target.querySelector(`.${options['container']}`)) {
-							[...target.querySelector(`.${options['container']}`).children].forEach(el => {
+							[...target.children].forEach(el => {
 								if (el === target.querySelector(`.${options['container']}`)) {
 									isDirectChild = true
 								}

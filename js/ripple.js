@@ -273,23 +273,32 @@
 					}
 				})
 
-				//	If options['target'] is not false:
-				if (options['target'] !== false) {
-					//	If options['target'] is a String (Classname):
+				//	If `trigger.dataset.rippleTriggerFor` is undefined and
+				//	`options['target']` is not false:
+				if (trigger.dataset.rippleTriggerFor === undefined && options['target'] !== false) {
+					//	If `options['target']` is a String (CSS Selector):
 					if (typeof options['target'] === 'string' && options['target'].length > 0) {
-						if (options['target'][0] === '.') {
-							options['target'] = options['target'].substring(1)
-						}
-						//if ()
-						targets = document.querySelectorAll(`.${options['target']}`)
+						targets = document.querySelectorAll(options['target'])
 					}
-					//	If options['target'] is an HTMLElement:
+					//	If `options['target']` is an HTMLElement:
 					else if (options['target'] instanceof HTMLElement) {
 						targets = [options['target']]
 					}
-					//	If options['target'] is an Array:
-					else if (options['target'].isArray()) {
-						console.log('array')
+					//	If `options['target']` is an Array:
+					else if (Array.isArray(options['target'])) {
+						let tempTargets = []
+
+						options['target'].forEach(target => {
+							//	If `target` is a String (CSS Selector):
+							if (typeof target === 'string' && target.length > 0) {
+								tempTargets.push(...document.querySelectorAll(target))
+							}
+							//	If `target` is an HTMLElement:
+							else if (target instanceof HTMLElement) {
+								tempTargets.push(target)
+							}
+						})
+						targets = [...new Set(tempTargets)]
 					}
 				}
 
@@ -750,10 +759,8 @@
 			elements = [elements]
 		}
 
-		if (typeof elements === 'string') {
-			elements.split(',').forEach(_className => {
-				attachClass(_className, options)
-			})
+		if (typeof elements === 'string' && elements.length > 0) {
+			attachClass(elements, options)
 		}
 		else if (Array.isArray(elements)) {
 			let _elements = []
@@ -764,7 +771,7 @@
 			elements.forEach(_arrayItem => {
 				//	If `_arrayItem` is a string: (it probably means
 				//	that it is a classname.)
-				if (typeof _arrayItem === 'string') {
+				if (typeof _arrayItem === 'string' && _arrayItem.length > 0) {
 					//	Call next function.
 					//	(Create a new classname trigger.)
 					attachClass(_arrayItem, options)
@@ -791,20 +798,26 @@
 	 *	or array of elements from Ripple.triggerElements which will prevent
 	 *	the creation of ripple effects on the element.
 	 *	
-	 *	@param {String | Array | HTMLElement} elements 
+	 *	@param {String | HTMLElement | Array<String | HTMLElement>} elements 
 	 */
 	Ripple.detach = (elements) => {
 		if (typeof elements === 'string') {
-			elements.split(',').forEach(_class => {
-				detachClass(_class)
-			})
+			detachClass(_class)
 		}
 		else {
 			if (elements instanceof HTMLElement) {
 				elements = [elements]
 			}
 			Array.from(elements).flat().forEach(_element => {
-				detachElement(_element)
+				if (typeof _element === 'string' && _element.length > 0) {
+					detachClass(_element)
+				}
+				else if (_element instanceof HTMLElement) {
+					detachElement(_element)
+				}
+				else {
+					throw new TypeError('_element is not a string or HTMLElement.')
+				}
 			})
 		}
 	}

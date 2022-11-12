@@ -1,0 +1,19 @@
+{
+  "name": "ripple-library",
+  "version": "0.1.0",
+  "description": "JavaScript ripple click effect library inspired by Material Design.",
+  "main": "src/js/ripple.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexIsTheGuy/Ripple.git"
+  },
+  "author": "Aleksandar Blažić",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexIsTheGuy/Ripple/issues"
+  },
+  "homepage": "https://AlexIsTheGuy.github.io/Ripple/"
+}

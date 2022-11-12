@@ -486,7 +486,7 @@
 			 */
 			const hideRippleParams = (e) => {
 				//	If the targets don't match:
-				if (!e.composedPath().includes(target)) {
+				if (!e.composedPath().includes(target) && !(options['target'] || target.dataset.rippleTarget)) {
 					//	Stop executing the function.
 					return false
 				}
@@ -510,7 +510,7 @@
 			 */	
 			touchEndRipple = async (e) => {
 				//	If the targets don't match:
-				if (!e.composedPath().includes(target)) {
+				if (!e.composedPath().includes(target) && !(options['target'] || target.dataset.rippleTarget)) {
 					//	Stop executing the function.
 					return false
 				}

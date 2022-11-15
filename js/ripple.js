@@ -41,12 +41,15 @@
 	 *	@returns {String} Random string.
 	 */
 	genRandomID = (len=16) => {
-		charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-		let randomString = ''
+		let 
+		charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+		randomString = ''
+
 		for (let i=0;i<len;i++) {
 			let randomPos = Math.floor(Math.random() * charSet.length)
 			randomString += charSet.substring(randomPos,randomPos+1)
 		}
+		
 		return randomString
 	},
 

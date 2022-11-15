@@ -9,7 +9,7 @@
  * https://github.com/AlexIsTheGuy/Ripple/blob/main/LICENSE
  */
 
-{
+(() => {
 	const
 	/**
 	 *	Default config/options
@@ -827,4 +827,4 @@
 
 	//	Add 'ripple-effect' classname to `Ripple.triggerClasses`.
 	Ripple.attach('.ripple-effect')
-}
+})()

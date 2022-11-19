@@ -9,7 +9,25 @@
  * https://github.com/AlexIsTheGuy/Ripple/blob/main/LICENSE
  */
 
-(() => {
+'use strict';
+
+((window, script) => {
+	
+	//	Node exports
+	if (typeof exports === 'object') {
+		module.exports = script.call(window)
+	}
+	//	Browser fallback
+	else {
+		window.Ripple = script.call(window)
+	}
+
+})(typeof global === 'object' ? global : this, () => {
+//	In the browser, `this` refers to the `window` object but in Node
+//	`this` refers to the `module.exports` object instead of the `global`
+//	object which is what is needed here.
+//	Also `globalThis` has poor support in browsers.
+
 	const
 	/**
 	 *	Default config/options
@@ -30,6 +48,11 @@
 			'container': '.ripple-container',
 			'target': false
 		}
+	},
+
+	Ripple = {
+		'triggerClasses': {},
+		'triggerElements': {}
 	},
 
 	//	Functions
@@ -90,7 +113,7 @@
 			_classname = _classname.substring(1)
 		}
 
-		window.Ripple.triggerClasses[_classname] = {
+		Ripple.triggerClasses[_classname] = {
 			'ripple': {..._options}
 		}
 	},
@@ -105,7 +128,7 @@
 			throw new TypeError('_elements is not an Array.')
 		}
 
-		window.Ripple.triggerElements[genRandomID()] = {
+		Ripple.triggerElements[genRandomID()] = {
 			'ripple': {..._options},
 			'elements': _elements
 		}
@@ -684,11 +707,6 @@
 
 	let rippleEffect
 
-	window.Ripple = {
-		'triggerClasses': {},
-		'triggerElements': {}
-	}
-
 	/**
 	 *	Adds event listeners to document body that listen for
 	 *	events and removes them if they already exists to prevent
@@ -827,4 +845,6 @@
 
 	//	Add 'ripple-effect' classname to `Ripple.triggerClasses`.
 	Ripple.attach('.ripple-effect')
-})()
+
+	return Ripple
+})

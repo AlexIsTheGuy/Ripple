@@ -23,10 +23,7 @@
 	overflow: hidden;
 }
 
-.ripple-container-unbounded {
-	overflow: visible;
-}
-
+.ripple-container-unbounded,
 .ripple-container-unbounded > .ripple-container {
 	overflow: visible;
 }
@@ -40,5 +37,6 @@
 	transition-property: transform,opacity;
 	transition-timing-function: ease-out;
     pointer-events: none;
+	will-change: opacity, transform;
     z-index: 1;
 }

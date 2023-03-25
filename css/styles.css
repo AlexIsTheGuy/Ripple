@@ -86,7 +86,7 @@
 	--mdc-theme-text-disabled-on-light: rgba(255, 255, 255, .38);
 	--mdc-theme-text-icon-on-light: rgba(255, 255, 255, .38);
 
-	--mdc-checkbox-unchecked-color: rgba(255, 255, 255, .54);
+	--mdc-checkbox-unchecked-color: rgba(255, 255, 255, .84);
 	--mdc-checkbox-disabled-color: rgba(255, 255, 255, .38);
 	
 	--mdc-ripple-color: var(--mdc-theme-on-surface);
@@ -206,7 +206,7 @@ a {
 }
 
 .mdc-button:not(.mdc-top-app-bar__action-item),.mdc-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected, .mdc-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected,
-.mdc-radio,.mdc-switch.mdc-switch--selected .mdc-switch__ripple {
+.mdc-radio .mdc-radio__native-control:checked + .mdc-radio__background + .mdc-radio__ripple + .ripple-container,.mdc-switch.mdc-switch--selected .mdc-switch__ripple {
 	--ripple-color: var(--ripple-accent-color);
 }
 
@@ -238,6 +238,15 @@ a {
 
 .mdc-checkbox,.mdc-radio,.mdc-switch__ripple {
 	border-radius: 50%;
+}
+
+.mdc-radio .mdc-radio__native-control:checked + .mdc-radio__background + .mdc-radio__ripple::before,
+.mdc-radio .mdc-radio__native-control:checked + .mdc-radio__background + .mdc-radio__ripple::after,
+.mdc-checkbox .mdc-checkbox__native-control:checked + .mdc-checkbox__background + .mdc-checkbox__ripple::before,
+.mdc-checkbox .mdc-checkbox__native-control:checked + .mdc-checkbox__background + .mdc-checkbox__ripple::after,
+.mdc-checkbox .mdc-checkbox__native-control[aria-checked='mixed'] + .mdc-checkbox__background + .mdc-checkbox__ripple::before,
+.mdc-checkbox .mdc-checkbox__native-control[aria-checked='mixed'] + .mdc-checkbox__background + .mdc-checkbox__ripple::after {
+	background-color: var(--accent-color)
 }
 
 .mdc-switch__handle,.mdc-switch__shadow,.mdc-switch__ripple {

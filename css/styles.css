@@ -42,6 +42,8 @@
 	--mdc-switch-unselected-hover-handle-color: #818181;
 	--mdc-switch-unselected-pressed-handle-color: #818181;
 	--mdc-switch-unselected-focus-handle-color: #818181;
+	--mdc-switch-unselected-focus-state-layer-color: #818181;
+	--mdc-switch-unselected-pressed-state-layer-color: #818181;
 	--mdc-switch-selected-handle-color: var(--mdc-theme-primary);
 	--mdc-switch-selected-hover-handle-color: var(--mdc-theme-primary);
 	--mdc-switch-selected-pressed-handle-color: var(--mdc-theme-primary);
@@ -204,7 +206,7 @@ a {
 }
 
 .mdc-button:not(.mdc-top-app-bar__action-item),.mdc-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected, .mdc-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected,
-.mdc-radio, .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple,.mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple {
+.mdc-radio,.mdc-switch.mdc-switch--selected .mdc-switch__ripple {
 	--ripple-color: var(--ripple-accent-color);
 }
 

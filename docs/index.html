@@ -89,6 +89,7 @@
 									'disabled': false,
 									'centered': false,
 									'copyBorderRadius': true,
+									'keyboardTrigger': [' ', 'Enter'],
 									'helperClass': true,
 									'container': '.ripple-container',
 									'target': false
@@ -169,6 +170,13 @@
 										<td class='mdc-data-table__cell'><code class='language-js'>true</code></td>
 										<td class='mdc-data-table__cell'>Copies the border radius CSS property value from the target element and applies it to the ripple container.</td>
 										<td class='mdc-data-table__cell'>Boolean</td>
+									</tr>
+									<tr class='mdc-data-table__row'>
+										<th class='mdc-data-table__cell' scope='row'>ripple.keyboardTrigger</th>
+
+										<td class='mdc-data-table__cell'><pre class='match-braces-normalize'><code class='language-js match-braces'>[' ', 'Enter']</code></pre></td>
+										<td class='mdc-data-table__cell'>Keyboard keys that will trigger a ripple effect on a focused element when pressed. False means keyboard keys won't trigger a ripple effect.</td>
+										<td class='mdc-data-table__cell'>Array, String or false</td>
 									</tr>
 									<tr class='mdc-data-table__row'>
 										<th class='mdc-data-table__cell' scope='row'>ripple.helperClass</th>

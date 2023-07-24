@@ -224,8 +224,23 @@
 				<div class='container'>
 
 					<p class='mdc-typography--body1'>
-						In Ripple there are 2 objects that can be accessed: Ripple.triggerClasses and Ripple.triggerElements.
+						In Ripple there are 3 objects that can be accessed: Ripple.options, Ripple.triggerClasses and Ripple.triggerElements.
 					</p>
+
+					<h3 class='mdc-typography--headline6'>Ripple.options (read only)</h3>
+
+					<div class='headline6-container'>
+
+						<p class='mdc-typography--body1'>
+							Ripple.options object contains a full list of the global options for the current instance of Ripple.
+						</p>
+
+						<p class='mdc-typography--body1'>
+							Ripple.options object is frozen (read only) which means that it is impossible to change its values for the current instance of Ripple.
+							Changing the global options more than once is considered to be a bad practice and can only be done by reinitializing Ripple.
+						</p>
+
+					</div>
 
 					<h3 class='mdc-typography--headline6'>Ripple.triggerClasses</h3>
 

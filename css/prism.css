@@ -1,16 +1,41 @@
 /**
- * Monokai Dark Soda
- *
- * For HTML, CSS and JS only.
- * Based on https://github.com/AdamCaviness/vs-code-theme-monokai-dark-soda.
+ *	For HTML, CSS and JS only.
+ *	Based on https://github.com/AdamCaviness/vs-code-theme-monokai-dark-soda.
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+@font-face {
+	font-family: 'Fantasque Sans Mono';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/FantasqueSansMono-Regular.woff2') format('woff2'),
+		 url('../fonts/FantasqueSansMono-Regular.woff') format('woff'),
+		 url('../fonts/FantasqueSansMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Fantasque Sans Mono';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('../fonts/FantasqueSansMono-Italic.woff2') format('woff2'),
+		 url('../fonts/FantasqueSansMono-Italic.woff') format('woff'),
+		 url('../fonts/FantasqueSansMono-Italic.ttf') format('truetype');
+}
+
+code[class*='language-']::selection,
+pre[class*='language-']::selection,
+code[class*='language-'] span::selection {
+	background: #403D3D;
+	color: unset;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
 	color: #f8f8f2;
 	background: none;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	font-family: Consolas, "Courier New", monospace;
+	font-family: 'Fantasque Sans Mono', Consolas, 'Courier New', monospace;
+	letter-spacing: .01em;
 	font-size: 1em;
 	text-align: left;
 	white-space: pre;
@@ -30,20 +55,20 @@ pre[class*="language-"] {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
 	border-radius: 0.3em;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"],.codeblock {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'],.codeblock {
 	background: #242424;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
 	padding: .2em;
 	border-radius: .3em;
 	white-space: normal;
@@ -180,4 +205,19 @@ code.language-css,
 .token.brace-open:not([id^='pair-']),
 .token.brace-close:not([id^='pair-']) {
     color: #ff1212cc;
+}
+
+pre.match-braces-normalize[class*='language-'] {
+    display: inline-block;
+	background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+pre.match-braces-normalize[class*='language-'] code[class*='language-'] {
+	background-color: #242424;
+	padding: 0.2em;
+    border-radius: 0.3em;
+    white-space: normal;
 }
